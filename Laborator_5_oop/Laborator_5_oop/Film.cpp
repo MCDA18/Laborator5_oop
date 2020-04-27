@@ -1,5 +1,7 @@
 #include "Film.h"
 #include <iostream>
+
+
 using namespace std;
 //constructoru default
 Film::Film()
@@ -223,3 +225,165 @@ void Film::modificare_film()
 	if (ok == 0)
 		cout << "Filmul pe care doriti sa-l modificati,nu exista!";
 }
+
+/// Cautarea dupa gen A Utilizatorului
+void Film::Cautare()
+{
+	string gen;
+	cout << "Genul este: ";
+	cin >> gen;
+	int ok = 0;
+	int k = 1;
+	for (auto it : v) /// Cautam in lista de filme
+	{
+			if (gen == it.genre && k==1) /// afisam primul gen 
+			{
+				cout << it.titel << " " << it.genre << " " << it.erscheinungsjahr << " " << it.anzahl_likes << " " << it.trailer << endl;
+				string From = string(it.trailer);
+				wstring To(From.begin(), From.end()); ///am transformat din string in wstring
+				LPCWSTR Last = To.c_str(); /// din wstring in LPCWSTR
+				LPCWSTR C = TEXT("open");
+				ShellExecute(NULL,C, Last, NULL, NULL, SW_SHOWNORMAL); ///aceseaza browserul
+				ok = 1;
+				int m;
+				do
+					{
+						///Meniul pentru problema 3 care contine problema 2 incorporata 
+						cout << "1.Continuati / Adaugati" << endl;
+						cout << "2.Nu Adaugati / Continuati" << endl;
+						cout << "0.Iesiti " << endl;
+						cout << "Alegeti ce doriti sa faceti apasand tasta de tip numar,din stanga celor de mai sus: ";
+						cin >> m;
+						//optiune continuare si adaugare
+						if (m == 1)
+						{
+							addListaFilme(it);
+							break;
+						}
+						else
+							//optiune continuare
+							if (m == 2)
+								break;
+								else
+									if (m == 0)
+									{
+										cout << "Ati iesit din modul cautare";
+										k = 0;
+										break;
+									}
+						//Sleep(3000);
+						//system("CLS");
+				} while (m != 0);
+			}
+	}
+	if (ok == 0) ///daca nu a gasit genul afisam toate filmele
+	{
+		afisare_filme();
+	}
+}
+
+// adaugam in lista de filme
+
+void Film::addListaFilme(Film it) {
+	int ok = 1;
+	// veerificam daca filmul nu este deja in watchlist
+	for (auto i : ListaFilme) {
+		if (i.titel == it.titel) {
+			cout << "\nFilm se afla in Lista!\n";
+			ok = 0;
+		}
+	}
+	if (ok == 1) {
+		ListaFilme.push_back(it);
+		cout << "\nFilm Adaugat cu succes.\n";
+	}
+}
+void Film::stergere()
+{
+	vector<Film> aux;
+	vector<Film> aux1;
+	int ok = 0;
+	Film f;
+	string titlu;
+	cout << "Dati titlul: ";
+	cin >> titlu;
+	for (auto it : ListaFilme) ///Parcurgem lista de vizionari 
+	{
+		if (it.titel == titlu) ///Cautam titlul
+		{
+			ok = 1;
+			cout << "Doriti sa dati un like la aceast film\n";
+			cout << "Tasta 1 = Da\n";
+			cout << "Tasta 2 = Nu\n";
+			cout << "Apasati Tasta = ";
+			int n;
+			cin >> n;
+			if (n == 1) ///Partea de modificare a like-ului in lista de filme si stergerea filmului in lista de vizionari
+			{ 
+				for (const auto& film : v) /// parcurgem pentru lista de filme 
+					if (film.titel == titlu)
+					{
+						f.titel = film.titel;
+						f.genre = film.genre;
+						f.erscheinungsjahr = film.erscheinungsjahr;
+						f.anzahl_likes = film.anzahl_likes + 1; ///Cand gasim filmul modificam pretul
+						f.trailer = film.trailer;
+						aux.push_back(f);
+					}
+					else
+					{
+						f.titel = film.titel;
+						f.genre = film.genre;
+						f.erscheinungsjahr = film.erscheinungsjahr;
+						f.anzahl_likes = film.anzahl_likes;
+						f.trailer = film.trailer;
+						aux.push_back(f);
+					}
+				v = aux;//se pune aux in vectoru v 
+				for (const auto& film : ListaFilme)
+					if (film.titel != titlu)   ///Stergem filmul din lista de Vizionare
+					{
+						f.titel = film.titel;
+						f.genre = film.genre;
+						f.erscheinungsjahr = film.erscheinungsjahr;
+						f.anzahl_likes = film.anzahl_likes;
+						f.trailer = film.trailer;
+						aux1.push_back(f);//creaza un nou vector,fara filmul pe care dorim sa l stergem
+					}
+				ListaFilme = aux1;//se pune aux in vectoru ListaFilme
+				cout << "Filmul a fost sters cu succes";
+			}
+
+			else
+				if (n == 2)
+				{
+					for (const auto& film : ListaFilme)
+						if (film.titel != titlu)	///Stergem filmul din lista de Vizionare
+						{
+							f.titel = film.titel;
+							f.genre = film.genre;
+							f.erscheinungsjahr = film.erscheinungsjahr;
+							f.anzahl_likes = film.anzahl_likes;
+							f.trailer = film.trailer;
+							aux.push_back(f);//creaza un nou vector,fara filmul pe care dorim sa l stergem
+						}
+					ListaFilme = aux1;//se pune aux in vectoru v
+					cout << "Filmul a fost sters cu succes";
+
+				}
+				else
+					if (n != 1 && n != 2)
+						cout << "Tasta incorecta";
+		}
+				
+		
+	}
+	if (ok == 0)
+		cout << "Nu exista filmul";
+}
+void Film :: Afisare()
+{/// Afisam lista de vizionare
+	for (auto it: ListaFilme)
+		 cout << it.titel << " " << it.genre << " " << it.erscheinungsjahr << " " << it.anzahl_likes << " " << it.trailer << endl;
+}
+

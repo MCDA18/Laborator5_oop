@@ -1,8 +1,8 @@
 ﻿  Film.cpp
-C:\Users\Darius\source\repos\Laborator_5_oop\Laborator_5_oop\Film.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Darius\source\repos\Laborator_5_oop\Laborator_5_oop\Film.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Mihai\Documents\GitHub\Laborator5_oop\Laborator_5_oop\Laborator_5_oop\Film.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Mihai\Documents\GitHub\Laborator5_oop\Laborator_5_oop\Laborator_5_oop\Film.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Main.cpp
-C:\Users\Darius\source\repos\Laborator_5_oop\Laborator_5_oop\Film.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Darius\source\repos\Laborator_5_oop\Laborator_5_oop\Film.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Mihai\Documents\GitHub\Laborator5_oop\Laborator_5_oop\Laborator_5_oop\Film.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Mihai\Documents\GitHub\Laborator5_oop\Laborator_5_oop\Laborator_5_oop\Film.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Generating Code...
-  Laborator_5_oop.vcxproj -> C:\Users\Darius\source\repos\Laborator_5_oop\Debug\Laborator_5_oop.exe
+  Laborator_5_oop.vcxproj -> C:\Users\Mihai\Documents\GitHub\Laborator5_oop\Laborator_5_oop\Debug\Laborator_5_oop.exe

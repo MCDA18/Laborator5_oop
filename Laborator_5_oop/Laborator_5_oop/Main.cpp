@@ -7,11 +7,11 @@ using namespace std;
 int main()
 {
 	Film f;
-	f.adaugare_film("ana", "horror", 2004, 2991, "ww.cs/0");
+	f.adaugare_film("ana", "horror", 2004, 2991, "https://www.google.com/webhp?hl=ro&sa=X&ved=0ahUKEwjnxo6GjojpAhWUtXEKHX1JAycQPAgH");
 	f.adaugare_film("asj", "comedie", 2009, 3647, "www.cs/1");
 	f.adaugare_film("Iron", "comedie", 2013, 9585, "www.cs/2");
 	f.adaugare_film("Captain", "actiune", 2017, 2141, "www.cs/3");
-	f.adaugare_film("Conasu", "horror", 2019, 1235, "www.cs/4");
+	f.adaugare_film("Conasu", "horror", 2019, 1235, "https://www.youtube.com/");
 	f.adaugare_film("Eu", "thriller", 1999,912, "www.cs/5");
 	f.adaugare_film("Vremea", "aventura", 2005, 1257, "www.cs/6");
 	f.adaugare_film("Singur!", "comedie", 2015, 4542, "www.cs/7");
@@ -61,6 +61,35 @@ int main()
 				Sleep(3000);
 				system("CLS");
 			} while (m != 0);
+		if (n == 2)
+			do
+				{
+					system("CLS");
+					cout << "Ati intrat in modul Utilizator:" << endl;
+					cout << "1.Cautati dupa gen " << endl;
+					cout << "2. Stergreti din lista de vizionare" << endl;
+					cout << "3. Afisare Lista de vizionare" << endl;
+					cout << "0. Apasand tasta 0, va reintoarceti la pagina principala!" << endl;
+					cout << "Alegeti ce doriti sa faceti apasand tasta de tip numar,din stanga celor de mai sus: ";
+					cin >> m;
+					//optiune adaugare
+					if (m == 1)
+						f.Cautare();
+					else
+						if (m == 2)
+							f.stergere();
+						else
+							if (m == 3)
+								f.Afisare();
+							else
+								if (m == 0)
+									{
+									cout << "Ati iesit din modul administrator";
+									break;
+									}
+					Sleep(3000);
+					system("CLS");
+				} while (m != 0);
 		if (n == 0)
 			break;
 		Sleep(3000);
